@@ -2,7 +2,7 @@
 you can run JavaScript in several ways:
 
     Using console tab of web browsers: type and execute javascript interactively 
-    Using Node.js: calling node on js scripts to execute it or by launching node interactive environment(a kind of console) by calling node.
+    Using Node.js: calling node on js scripts to execute it or by launching node interactive environment(a kind of console) by calling node.To exit .exit or ctrl + c twice
     By creating web pages: And linking them to js scripts
 
 */
@@ -63,7 +63,7 @@ const x; //*!error!
 /*There are eight basic data types in JavaScript. They are:
 Data Types             Description                               Example
 Primitive- only stores a single data			
-String          represents textual data                     'hello', "hello world!", `hello ${name}`etc
+String          represents textual data                     'hello', "hello world!", `Template Literals: hello ${name}`etc
 			
 Number          an integer or a floating-point number       3, 3.234, 3e-2 etc.
 			
@@ -80,7 +80,7 @@ Symbol          data type whose instances are unique and immutable.  let value =
 non-primitive- store collections of data
 Object          key-value pairs of collection of data           let student = {name: "Ernest", age: 25,.. };*/
 
-// typeof: Used to find the type of variable.
+// typeof(): Used to find the type of variable.
 let javascriptIsFun = true;
 typeof(javascriptIsFun);
 
@@ -88,27 +88,80 @@ typeof(javascriptIsFun);
 
 It also means that a variable can be of one data type and later it can be changed to another data type. */
 
+//*! ---- String and Template Literals ----
+const firstName = 'Ernest';
+const job = 'Software Engineer';
+const birthYear = 1991;
+const year = 2037;
+const ernest = 'I\'m ' + firstName + ', a ' + (year - birthYear) + ' year old ' + job + '!';
+console.log(ernest);
+// Template Literals: Used to assemble several string values.
+const jonasNew = `I'm ${firstName}, a ${year - birthYear}`
+console.log(jonasNew)
+    // We can also use back ticks for all strings.
+console.log(`Just a string `)
+    // Multiline strings
+console.log('String with \n\
+multiple \n\
+lines');
+// Multiline Template strings
+console.log(`String
+with
+multiple
+lines`);
+
+
+// *!---- Type Conversions ----
+// Implicit conversion: automatic type conversion
+console.log('3' + 2) // "32" + as operand btn string and any other data type results in string.
+console.log('4' - '2'); // 2  other operands result to numbers
+// Explicit conversion: manual type conversion
+Number('324'); //Any value to number.
+Number('hello') //if string is not a number result will be NaN
+    // You can also generate numbers from strings using parseInt(), parseFloat(), unary operator + and Math.floor()
+String(324); //Any value to string.
+Boolean(1) //Any value to Boolean.
+
+
 //*!--- Operators ----
 // is a special symbol used to perform operations on operands (values and variables)
 /*
  */
-const now = 2037;
-const ageJonas = now - 1991;
-const ageSarah = now - 2018;
+// Arithmetic Operators
+let x = 5;
+let y = 3;
+// addition
+console.log('x + y = ', x + y); // 8
+// subtraction
+console.log('x - y = ', x - y); // 2
+// multiplication
+console.log('x * y = ', x * y); // 15
+// division
+console.log('x / y = ', x / y); // 1.6666666666666667
+// remainder
+console.log('x % y = ', x % y); // 2
+// increment
+console.log('++x = ', ++x); // x is now 6
+console.log('x++ = ', x++); // prints 6 and then increased to 7
+console.log('x = ', x); // 7
+// decrement
+console.log('--x = ', --x); // x is now 6
+console.log('x-- = ', x--); // prints 6 and then decreased to 5
+console.log('x = ', x); // 5
+//exponentiation
+console.log('x ** y =', x ** y);
 
-console.log(ageJonas, ageSarah)
-
-console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
-
+// -- String Operators --
 const firstName = 'Jonas';
-const lastName = 'Mwendwa';
+const lastName = 'Nick';
 console.log(firstName + ' ' + lastName); //Template string is better for this operation
 
-let x = 10 + 5;
+//-- Assignment Operators--
+let x = 10 + 5; //most common assignment operator
 console.log(x);
-x += 10; //x = x + 10
+x += 10; //x = x + 10 Addition assignment operator
 console.log(x);
-x *= 2;
+x *= 2; //Multiplication assignment operator
 console.log(x);
 x++;
 console.log(x);
@@ -116,18 +169,55 @@ x--;
 console.log(x);
 
 // Comparison Operator return a boolean value
-console.log(ageJonas > ageSarah);
-console.log(ageJonas < ageSarah);
-console.log(ageSarah >= 18);
-console.log(ageSarah >= 17);
-console.log(ageSarah >= 19);
+// equal operator
+console.log(2 == 2); // true
+console.log(2 == '2'); // true
+// not equal operator
+console.log(3 != 2); // true
+console.log('hello' != 'Hello'); // true
+// strict equal operator: true if the operands are equal and of the same type
+console.log(2 === 2); // true
+console.log(2 === '2'); // false
+// strict not equal operator: true if the operands are equal but of different type or not equal at all
+console.log(2 !== '2'); // true
+console.log(2 !== 2); // false
+// > greater than, >= greater than or equal to
+// < less than, <= less than or equal to
+
+//-- Logical Operators --
+// logical AND
+console.log(true && true); // true
+console.log(true && false); // false
+// logical OR
+console.log(true || false); // true
+// logical NOT
+console.log(!true); // false
+
+/**
+ & Bitwise AND			
+ | Bitwise OR
+ */
+//-- Other Operators --
+/* ?: returns value based on the condition*/
+(5 > 3) ? 'success' : 'error'; // "success"
+// in: returns true if the specified property is in the object
+5 in [1, 2, 3, 4, 5]
 
 // Console has access to the variables loaded in a webpage, but any definition get lost when page is reloaded.
 
 // Operator Precedence : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
-
 const averageage = (ageJonas + ageSarah) / 2; // Brackets have the highest preceedence 
 console.log(averageage)
+
+
+// *!---- Comments ----
+//single line
+/*Multi
+line*/
+// Use comments to explain why you did something rather than how you did something.
+// Comments shouldn't be the substitute for a way to explain poorly written code in English. 
+// You should always write well-structured and self-explanatory code. And, then use comments.
+
 
 // Coding Challenge #1
 
@@ -157,60 +247,383 @@ markHigherBMI = markBMI > johnBMI;
 
 console.log(markBMI, johnBMI, markHigherBMI)
 
-String and Template Literals
-const firstName = 'Ernest';
-const job = 'Software Engineer';
-const birthYear = 1991;
-const year = 2037;
 
-const ernest = 'I\'m ' + firstName + ', a ' + (year - birthYear) + ' year old ' + job + '!';
 
-console.log(ernest);
 
-// Template Literals: Used to assemble several string values.
-const jonasNew = `I'm ${firstName}, a ${year - birthYear}`
+//*!---- if...else statement. -----
+// Check if someone is old enough to take a driver 's license.
 
-console.log(jonasNew)
-
-// We can also use back ticks for all strings.
-console.log(`Just a string `)
-
-// Multiline strings
-console.log('String with \n\
-multiple \n\
-lines');
-
-// Multiline Template strings
-console.log(`String
-with
-multiple
-lines`);
-
-Take Decision using control structures.
-Check
-if someone is old enough to take a driver 's license.
-
+/**The if statement evaluates the condition inside the parenthesis ().
+    1.If the condition is evaluated to true, the code inside the body of if {} is executed.
+    2.If the condition is evaluated to false, the code inside the body of if is skipped.
+ */
 const age = 17;
 
 if (age >= 18) {
-    console.log('You can have your driving lincense 🚗')
+    console.log('You can have your driving license 🚗')
+}
+
+/*The if..else statement evaluates the condition inside the parenthesis.
+
+If the condition is evaluated to true,
+    the code inside the body of if is executed
+    the code inside the body of else is skipped from execution
+
+If the condition is evaluated to false,
+    the code inside the body of else is executed
+    the code inside the body of if is skipped from execution
+ */
+if (age >= 18) {
+    console.log('You can have your driving license 🚗')
 } else {
     const yearsLeft = 18 - age
     console.log(`You are underage wait another ${yearsLeft} years`)
 }
+/*  
+If condition1 evaluates to true, the code block 1 is executed.
+If condition1 evaluates to false, then condition2 is evaluated.
+    If the condition2 is true, the code block 2 is executed.
+    If the condition2 is false, the code block 3 is executed.
+*/
 
-// Another variable
-const birthYear = 1991;
+yearOfBirth = Number(prompt('In which year were you born ?'))
 
-// Find the century the person was born in 
-let century; //First declare a variable that is to be used in the control structure.
-if (birthYear < 2000) {
-    century = 20;
+if (yearOfBirth === 2000) {
+    console.log(`Born in 21 Century !`);
+} else if (yearOfBirth === 1999) {
+    console.log('Born in 20th Century');
 } else {
-    century = 21
+    console.log('error!!');
 }
 
-console.log(century)
+/**Nested if...else Statement
+You can also use an if...else statement inside of an if...else statement. 
+This is known as nested if...else statement. */
+// check if the number is positive, negative or zero
+const number = prompt("Enter a number: ");
+
+if (number >= 0) {
+    if (number == 0) {
+        console.log("You entered number 0");
+    } else {
+        console.log("You entered a positive number");
+    }
+} else {
+    console.log("You entered a negative number");
+}
+
+// In programming, loops are used to repeat a block of code.
+//*! for loop
+
+// for (initialExpression; condition; incrementExpression) {
+// for loop body
+// }
+// print a statement 5 times
+for (let i = 1; i <= 5; i++) {
+    console.log(`I love JavaScript.`);
+}
+
+// program to display the sum of natural numbers from 1 to 500
+let sum = 0;
+for (let i = 1; i <= 500; i++) {
+    sum += i; // sum = sum + i
+}
+console.log('sum:', sum);
+
+//Infinite loop: If the test condition in a for loop is always true, it runs forever (until memory is full).
+
+
+//*! ---- while loop ----
+// while (condition) {
+// body of loop
+// }
+
+// print statement 5 times
+let i = 1
+while (i <= 5) {
+    console.log(`I love javascript ${i}`);
+    i += 1;
+}
+
+
+// *! ---- do while loop ----
+/**
+ do {
+    // body of loop
+} while(condition)
+ */
+// The body of the loop is executed at first. Then the condition is evaluated.
+// Note: do...while loop is similar to the while loop. The only difference is that in do…while loop, the body of loop is executed at least once.
+
+
+// print statement 5 times
+let i = 1
+do {
+    console.log(`I love javascript ${i}`);
+    i++;
+} while (i <= 5)
+// If the condition of a loop is always true, the loop runs for infinite times (until the memory is full).
+// This is usually because the loop lacks an incrementExpression
+
+// While loop is versatile it doesn't really depend on the counter thats why:
+// A for loop is usually used when the number of iterations is known.
+// And while and do...while loops are usually used when the number of iterations are unknown or until some condition is met.
+
+// *! Break Statement
+// The break statement is used to terminate the loop immediately when it is encountered.
+// When break is used inside of two nested loops, break terminates the inner loop. 
+for (let i = 1; i <= 5; i++) {
+    // break condition     
+    if (i == 3) {
+        break;
+    }
+    console.log(i);
+}
+// when i is equal to 3, the break statement terminates the loop.
+// The break statement is almost always used with decision-making statements.
+
+// *! Continue statement
+// The continue statement is used to skip the current iteration of the loop and the control flow of the program goes to the next iteration.
+// The continue statement is almost always used with decision-making statements.
+for (let i = 1; i <= 5; i++) {
+    // break condition     
+    if (i == 3) {
+        continue;
+    }
+    console.log(i);
+}
+// When continue is used inside of two nested loops, continue skips the current iteration of the inner loop.
+// *!---- switch statement ----
+// 
+const day = 'Sundy';
+// The switch statement evaluates an expression and executes the corresponding body that matches the expression's result.
+// The switch statement checks the value strictly. Value + type are considered.
+switch (day) { //value we are testing
+    case 'Monday': //if day === 'Monday'
+        console.log('Plan course'); //body is executed
+        break; // without break code continues executing to the next case
+    case 'Tuesday':
+        console.log('Create course');
+        break;
+    case 'Wednesday':
+    case 'Thursday':
+        console.log('practice course');
+        console.log('Create course questions');
+        break;
+    case 'Friday':
+        console.log('Review course');
+        break;
+    case 'Saturday':
+        console.log('Deliver the course');
+        break;
+    case 'Sunday':
+        console.log('Relax');
+        break;
+    default: // if there is no matching case the default body is executed
+        console.log('Invalid Day');
+        break;
+}
+/**
+    - The break statement is optional. If the break statement is encountered, the switch statement ends.
+    - If the break statement is not used, the cases after the matching case are also executed.
+    - The default clause is also optional.
+*/
+// In a JavaScript switch statement, cases can be grouped to share the same code.
+// multiple case switch program
+let fruit = 'apple';
+switch (fruit) {
+    case 'apple':
+    case 'mango':
+    case 'pineapple':
+        console.log(`${fruit} is a fruit.`);
+        break;
+    default:
+        console.log(`${fruit} is not a fruit.`);
+        break;
+}
+
+// *!---- Functions ----
+// This is a block of code that performs a specific task. There are inbuilt and user-defined functions in Java.
+// -- declaring a function --
+/**
+ function(keyword) nameOfFunction () {
+    // function body   
+}
+ */
+function logger() {
+    console.log("My name is Jones");
+}
+
+// Function names should be descriptive.
+
+// -- calling a function --
+// To use that function, we need to call it.
+logger();
+
+// -- Functions with parameters -- 
+// Functions can take values as parameters(variables specific to a function that are defined during function calls)
+function fruitProcessor(apples, oranges) {
+    console.log(`Juice with ${apples} apples and ${oranges} oranges.`);
+}
+
+fruitProcessor(5, 0); //These values of the parameters that are passed during function calls are called arguments.
+
+// -- Function Return --
+// The return statement is used to return the value to a function call.
+// I nothing is return, the function returns an undefined value.
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+// -- Function Expressions --
+// Function as a value stored in variable
+let x = function(num1, num2) {
+    return num1 + num2;
+}
+
+result = x(5, 5)
+
+// ---- Arrow Functions ----
+// Example 1
+const calcAge3 = birthYear => 2021 - birthYear;
+const age3 = calcAge3(1996);
+console.log(age3);
+
+// Example 2
+const yearUntilRetirement = birthYear => {
+    const age = 2021 - birthYear;
+    const retirement = 65 - age;
+    return retirement;
+};
+
+console.log(yearUntilRetirement(1963));
+
+// with 2 parameters
+const yearUntilRetirement = (birthYear, name) => {
+    const age = 2021 - birthYear;
+    const retirement = 65 - age;
+    return `${name} retires in ${retirement} years`;
+};
+
+console.log(yearUntilRetirement(1963, "Mum"));
+// Best for one-liner tasks
+
+// *!--- Variable scope ---
+
+/**
+ * Scope refers to the availability of variables and functions in certain parts of the code.
+
+In JavaScript, a variable has two types of scope:
+
+    Global Scope: A variable declared at the top of a program or outside of a function. It means it can be used anywhere.
+    Local Scope: A variable that can only be accessed within a function.
+
+    Note: It is a good practice to avoid using global variables because the value of a global variable can change in different areas in the program. It can introduce unknown results in the program.
+ */
+
+// Local vs Global scope Example:
+let a = "hello"; //global variable
+
+function greet() {
+    let b = "World" //local variable
+    console.log(a + b); // hello world
+}
+
+greet();
+console.log(a + b); // error
+
+// let is Block Scoped
+// The let keyword is block-scoped (variable can be accessed only in the immediate block).
+
+// Example:
+// global variable. It can be accessed anywhere in the program
+let a = 'Hello';
+
+function greet() {
+
+    // local variable: It can be accessed only inside the function greet
+    let b = 'World';
+
+    console.log(a + ' ' + b);
+
+    if (b == 'World') {
+
+        // block-scoped variable: It can be accessed only inside the if statement block
+        let c = 'hello';
+
+        console.log(a + ' ' + b + ' ' + c);
+    }
+
+    // variable c cannot be accessed here
+    console.log(a + ' ' + b + ' ' + c);
+}
+
+greet();
+// Note: In JavaScript, var is function scoped and let is block-scoped. If you try to use var c = 'hello'; inside the if statement in the above program, the whole program works, as c is treated as a local variable.
+
+
+// Function Hoisting
+
+// A function can be called before declaring it.
+// Not possible when a function is used as an expression. Only declarations are hoisted.
+
+// program to print the text
+greet(); //Hi, there
+
+function greet() {
+    console.log('Hi, there.');
+}
+
+/* 
+Note: Generally, hoisting is not performed in other programming languages like Python, C, C++, Java.
+
+Hoisting can cause undesirable outcomes in your program. And it is best to declare variables and functions first before using them and avoid hoisting.
+
+In the case of variables, it is better to use let than var.
+*/
+
+// *! ---- Recursion ----
+// A function that calls itself is called a recursive function.
+// Factorial of a number
+
+/*function recurse() {
+    if(condition) { To prevent infinite recursion, you can use if...else statement (or similar approach) where one branch makes the recursive call, and the other doesn't.
+        recurse();
+    }
+    else {
+        // stop calling recurse()
+    }
+  }
+*/
+
+recurse();
+
+// Example:A program to find the factorial of a number
+
+function factorial(x) {
+
+    // if number is 0
+    if (x === 0) {
+        return 1;
+    }
+
+    // if number is positive
+    else {
+        return x * factorial(x - 1);
+    }
+}
+
+const num = 3;
+
+// calling factorial() if num is non-negative
+if (num > 0) {
+    let result = factorial(num);
+    console.log(`The factorial of ${num} is ${result}`);
+}
+
+// *! ---- JS Objects ----
+
+
 
 // Data 1
 let markWeight = 78;
@@ -227,71 +640,27 @@ if (markBMI > johnBMI) {
     console.log(`Mark's BMI (${markBMI}) is less than John's (${johnBMI})`)
 }
 
-// Type Conversion and Coercion
-
-// Type Conversion we manually convert from one type to another
-
-// We can convert strings to numbers using Number function.example"
-
-const inputYear = '1996';
-console.log(Number(inputYear) + 18)
-console.log(inputYear + 18) //original input is still a string, the number() gives us a converted value
-
-// To a string
-
-console.log(String(23));
-
-// Type Coercion: JavaScript automaically converts value in the background.
-// Happens when operator is dealing with values of different type.
-
-// When there is an operation btn string and number, and the operator is asting operator the number will be converted to string.
-
-console.log('I am ' + 23 + ' years old');
-console.log('10' + 3);
-
-console.log('10' - 3); // 10 converted to number because that's the only way - can work.This works for all operators except for additon.
-
-let n = '1' + 1;
-n = n - 1;
-console.log(n);
-
-// Truthy and Falsy Values.
-// Falsy values that are not false but will be converted to false when converted to boolean.They include 0, '', undefined, null, NaN (non values)
-// Everthing else will be Truthy.
-
-console.log(Boolean(0));
-console.log(Boolean(undefined));
-console.log(Boolean({}));
-console.log(Boolean('Jonas'));
 
 // Check if someone has money
 
 const money = 0;
 
 if (money) {
-    console.log('Funds avaible')
+    console.log('Funds available')
 } else {
-    console.log('Not funds avaible')
+    console.log('Not funds available')
 }
-
-Equality Operators loose == Vs strict ===
-    strict === because it does not perform type coercion
-const age = 18;
-if (age === 18) console.log('Strict')
-    // loose == becuase it does type coercion
-const age1 = '18';
-if (age1 == 18) console.log('Loose') //has some weird rules to be avoided
 
 // always use strict equality even if we need type conversion.
 
-const favourite = prompt('What is your favourite number?')
-console.log(favourite); // favourite is a string value.
-console.log(typeof(favourite))
+const favorite = prompt('What is your favorite number?')
+console.log(favorite); // favorite is a string value.
+console.log(typeof(favorite))
 
-// As a numeric type
-const favouriteNum = Number(prompt('What is your favourite number?'))
-console.log(favouriteNum); // favourite is a Numeric value.
-console.log(typeof(favouriteNum))
+// Take input as a number type
+const favoriteNum = Number(prompt('What is your favorite number?'))
+console.log(favoriteNum); // favorite is a Numeric value.
+console.log(typeof(favoriteNum))
 
 // else if 
 yearOfBirth = Number(prompt('In which year were you born ?'))
@@ -304,8 +673,7 @@ if (yearOfBirth === 2000) {
     console.log('error!!');
 }
 
-Not equal to !== strict Vs != loose
-Always use strict version of operator.
+// Not equal to !== strict Vs != loose Always use strict version of operator.
 
 Boolean Logic Operators: AND, OR & NOT.
 
